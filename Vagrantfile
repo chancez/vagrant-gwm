@@ -6,6 +6,10 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 80, 8080
 
   config.vm.provision :chef_solo do |chef|
+    chef.roles_path = "roles"
+    chef.add_role("ganeti_webmgr_application_server")
+    chef.add_role("ganeti_webmgr_load_balancer")
+
     chef.run_list = [
       "recipe[yum::default]",
       "recipe[nginx::default]",
