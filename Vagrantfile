@@ -1,20 +1,17 @@
 Vagrant::Config.run do |config|
   config.vm.host_name = "gwm"
-  config.vm.box = "centos-6-20130404"
-  config.vm.box_url = "http://packages.osuosl.org/vagrant/centos-6-20130404.box"
+  config.vm.box = "opscode_ubuntu-12.04-chef_solo-11.4.4"
+  config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.4.4.box"
 
-  config.vm.forward_port 80, 8080
+  config.vm.forward_port 80, 8000
 
   config.vm.provision :chef_solo do |chef|
     chef.roles_path = "roles"
-    chef.add_role("ganeti_webmgr_application_server")
-    chef.add_role("ganeti_webmgr_load_balancer")
 
     chef.run_list = [
-      "recipe[yum::default]",
-      "recipe[nginx::default]",
-      "recipe[python::default]",
-      "recipe[ganeti_webmgr::default]",
+      "recipe[apt]",
+      "recipe[python]",
+      "role[ganeti_webmgr]"
     ]
   end
 end
