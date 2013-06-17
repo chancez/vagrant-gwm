@@ -5,18 +5,29 @@ the Ganeti_Webmgr Django application.
 
 ### Requirements
 
-- Vagrant <= 2.0.0
+- Vagrant should work with any version. There is configuration for both v1 and
+  v2 configs
 - Berkshelf (optional)
+
 
 ### Berkshelf
 
 #### Installation and Setup:
 
     gem install
+    # If vagrant < 1.1.0
     berks install --path cookbooks
+    # If vagrant >= 1.1.0
+    vagrant plugin install vagrant-berkshelf
+
 
 This will install the berkshelf gem, and then it will install all the
-cookbook's required for the vagrant box to the `cookbooks` folder.
+cookbook's required for the vagrant box to the `cookbooks` folder. Or, if your
+running a newer version of Vagrant, it will use the vagrant-berkshelf plugin
+and do this automatically.
+
+If you do not want to use berkshelf, then you will have to install the
+cookbooks manually.
 
 #### Issues:
 
