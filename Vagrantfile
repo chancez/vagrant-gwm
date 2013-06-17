@@ -15,3 +15,9 @@ Vagrant::Config.run do |config|
     ]
   end
 end
+
+Vagrant.configure("2") do |config|
+    config.vm.hostname = "gwm"
+    config.vm.network :forwarded_port, guest: 80, host: 8000
+    config.berkshelf.enabled = true
+end
