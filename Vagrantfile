@@ -1,9 +1,10 @@
-Vagrant::Config.run do |config|
+Vagrant.configure("2") do |config|
   config.vm.host_name = "gwm"
   config.vm.box = "opscode_ubuntu-12.04-chef_solo-11.4.4"
   config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.4.4.box"
 
-  config.vm.forward_port 80, 8000
+  config.vm.network :forwarded_port, guest: 80, host: 8000
+  config.berkshelf.enabled = true
 
   config.vm.provision :chef_solo do |chef|
     chef.roles_path = "roles"
@@ -14,10 +15,4 @@ Vagrant::Config.run do |config|
       "role[ganeti_webmgr]"
     ]
   end
-end
-
-Vagrant.configure("2") do |config|
-    config.vm.hostname = "gwm"
-    config.vm.network :forwarded_port, guest: 80, host: 8000
-    config.berkshelf.enabled = true
 end
