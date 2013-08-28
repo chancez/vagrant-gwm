@@ -1,0 +1,8 @@
+{
+    "id": "mysql",
+    "name": "ganeti_webmgr",
+    "user": "ganeti_webmgr",
+    "password": "test",
+    "host": "localhost",
+    "port": "3306"
+}
