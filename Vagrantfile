@@ -25,7 +25,8 @@ Vagrant.configure("2") do |config|
         :server_repl_password => 'replpassj'
       },
       :ganeti_webmgr => {
-        :synced_folder => '/mnt/ganeti_webmgr'
+        :synced_folder => '/mnt/ganeti_webmgr',
+        :overwrite_settings => true
       }
     }
 
