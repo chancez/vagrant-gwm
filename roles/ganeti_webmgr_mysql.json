@@ -1,0 +1,18 @@
+{
+    "name": "ganeti_webmgr_mysql",
+    "description": "gwm core requirements plus mysql",
+    "default_attributes": {
+        "ganeti_webmgr": {
+            "owner": "vagrant",
+            "group": "vagrant",
+            "path": "/home/vagrant/gwm",
+            "debug": true,
+        }
+    },
+    "override_attributes": {},
+    "run_list": [
+        "recipe[ganeti_webmgr::mysql]"
+    ],
+    "chef_type": "role",
+    "json_class": "Chef::Role"
+}

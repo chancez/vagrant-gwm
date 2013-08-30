@@ -1,0 +1,11 @@
+{
+    "name": "ganeti_webmgr",
+    "description": "gwm core requirements",
+    "default_attributes": {},
+    "override_attributes": {},
+    "run_list": [
+        "recipe[ganeti_webmgr]"
+    ],
+    "chef_type": "role",
+    "json_class": "Chef::Role"
+}
